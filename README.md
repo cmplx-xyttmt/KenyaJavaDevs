@@ -25,6 +25,10 @@ generate an apk for the project; then install this apk on your device.
 ## Running the tests
 Coming Soon ...
 
+## Mockups
+![Main Activity Mockup](wireframes/main_activity_mockup.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Main Activity Mockup](wireframes/profile_activity_mockup.png)
+
 ## Built With
 - [Java](https://www.java.com/en/download/)
 - [Android Studio](https://developer.android.com/studio/)
