@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/cmplx-xyttmt/KenyaJavaDevs.svg?style=svg)](https://circleci.com/gh/cmplx-xyttmt/KenyaJavaDevs)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0506624bc76c92ec5a1c/maintainability)](https://codeclimate.com/github/cmplx-xyttmt/KenyaJavaDevs/maintainability)
+
 # Kenya Java Devs
 Kenya Java Devs is an android that retrieves a list of Java Developers
 in Nairobi using the [Github API](https://developer.github.com/v3/).
