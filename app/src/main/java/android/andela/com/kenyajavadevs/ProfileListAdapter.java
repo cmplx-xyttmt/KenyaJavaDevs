@@ -1,6 +1,7 @@
 package android.andela.com.kenyajavadevs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,10 +32,22 @@ public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProfileViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ProfileViewHolder holder, int position) {
         String username = mProfileList.get(position);
         holder.mProfileImage.setImageResource(R.drawable.profile_pic);
         holder.mProfileUsername.setText(username);
+
+        holder.mProfileItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                String username = mProfileList.get(holder.getAdapterPosition());
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra(MainActivity.EXTRA_USERNAME, username);
+                intent.putExtra(MainActivity.EXTRA_PROFILE_LINK, "github.com/" + username);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -46,12 +59,14 @@ public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.
         final ImageView mProfileImage;
         final TextView mProfileUsername;
         final ProfileListAdapter mAdapter;
+        final LinearLayout mProfileItemView;
 
         ProfileViewHolder(LinearLayout mProfileItemView, ProfileListAdapter adapter) {
             super(mProfileItemView);
             mProfileImage = mProfileItemView.findViewById(R.id.list_profile_image);
             mProfileUsername = mProfileItemView.findViewById(R.id.list_username);
             mAdapter = adapter;
+            this.mProfileItemView = mProfileItemView;
         }
     }
 }

@@ -8,6 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_USERNAME = "android.andela.com.kenyajavadevs.extra.USERNAME";
+    public static final String EXTRA_PROFILE_LINK = "android.andela.com.kenyajavadevs.extra.PROFILE_LINK";
+    // TODO: Also put an extra for the profile image.
+
     private final LinkedList<String> sampleUsernames = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private ProfileListAdapter mAdapter;
