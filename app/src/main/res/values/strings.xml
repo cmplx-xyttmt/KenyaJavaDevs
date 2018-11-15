@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Kenya Java Devs</string>
     <string name="username">sample-username</string>
+    <string name="profile_link">github.com/cmplx-xyttmt</string>
 </resources>
