@@ -1,5 +1,6 @@
-package android.andela.com.kenyajavadevs;
+package android.andela.com.kenyajavadevs.activities;
 
+import android.andela.com.kenyajavadevs.R;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
