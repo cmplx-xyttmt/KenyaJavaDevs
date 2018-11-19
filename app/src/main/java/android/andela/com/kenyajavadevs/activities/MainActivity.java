@@ -1,5 +1,6 @@
-package android.andela.com.kenyajavadevs;
+package android.andela.com.kenyajavadevs.activities;
 
+import android.andela.com.kenyajavadevs.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
