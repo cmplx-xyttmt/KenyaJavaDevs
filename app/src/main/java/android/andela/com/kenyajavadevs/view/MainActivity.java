@@ -1,6 +1,7 @@
-package android.andela.com.kenyajavadevs.activities;
+package android.andela.com.kenyajavadevs.view;
 
 import android.andela.com.kenyajavadevs.R;
+import android.andela.com.kenyajavadevs.adapter.ProfileListAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;

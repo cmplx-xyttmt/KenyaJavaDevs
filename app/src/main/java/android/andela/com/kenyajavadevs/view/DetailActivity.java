@@ -1,4 +1,4 @@
-package android.andela.com.kenyajavadevs.activities;
+package android.andela.com.kenyajavadevs.view;
 
 import android.andela.com.kenyajavadevs.R;
 import android.content.Intent;
