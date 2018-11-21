@@ -1,6 +1,7 @@
 package android.andela.com.kenyajavadevs.adapter;
 
 import android.andela.com.kenyajavadevs.R;
+import android.andela.com.kenyajavadevs.model.GithubUser;
 import android.andela.com.kenyajavadevs.view.DetailActivity;
 import android.andela.com.kenyajavadevs.view.MainActivity;
 import android.content.Context;
@@ -14,16 +15,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.ProfileViewHolder> {
-    private final LinkedList<String> mProfileList;
+public class GithubUsersAdapter extends RecyclerView.Adapter<GithubUsersAdapter.ProfileViewHolder> {
+    private final ArrayList<GithubUser> mProfileList;
     private LayoutInflater mInflator;
 
-    public ProfileListAdapter(Context context, List<String> profileList) {
+    public GithubUsersAdapter(Context context, List<GithubUser> profileList) {
         mInflator = LayoutInflater.from(context);
-        mProfileList = (LinkedList<String>) profileList;
+        mProfileList = (ArrayList<GithubUser>) profileList;
     }
 
 
@@ -36,15 +37,15 @@ public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull final ProfileViewHolder holder, int position) {
-        String username = mProfileList.get(position);
+        GithubUser profile = mProfileList.get(position);
         holder.mProfileImage.setImageResource(R.drawable.profile_pic);
-        holder.mProfileUsername.setText(username);
+        holder.mProfileUsername.setText(profile.getUsername());
 
         holder.mProfileItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                String username = mProfileList.get(holder.getAdapterPosition());
+                String username = mProfileList.get(holder.getAdapterPosition()).getUsername();
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra(MainActivity.EXTRA_USERNAME, username);
                 intent.putExtra(MainActivity.EXTRA_PROFILE_LINK, "github.com/" + username);
@@ -61,10 +62,10 @@ public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.
     class ProfileViewHolder extends RecyclerView.ViewHolder {
         final ImageView mProfileImage;
         final TextView mProfileUsername;
-        final ProfileListAdapter mAdapter;
+        final GithubUsersAdapter mAdapter;
         final LinearLayout mProfileItemView;
 
-        ProfileViewHolder(LinearLayout mProfileItemView, ProfileListAdapter adapter) {
+        ProfileViewHolder(LinearLayout mProfileItemView, GithubUsersAdapter adapter) {
             super(mProfileItemView);
             mProfileImage = mProfileItemView.findViewById(R.id.list_profile_image);
             mProfileUsername = mProfileItemView.findViewById(R.id.list_username);
