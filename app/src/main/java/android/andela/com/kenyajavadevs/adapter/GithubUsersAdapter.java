@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class GithubUsersAdapter extends RecyclerView.Adapter<GithubUsersAdapter.
     @Override
     public void onBindViewHolder(@NonNull final ProfileViewHolder holder, int position) {
         GithubUser profile = mProfileList.get(position);
-        holder.mProfileImage.setImageResource(R.drawable.profile_pic);
+        Picasso.get().load(profile.getAvatarUrl()).into(holder.mProfileImage);
         holder.mProfileUsername.setText(profile.getUsername());
 
         holder.mProfileItemView.setOnClickListener(new View.OnClickListener() {
