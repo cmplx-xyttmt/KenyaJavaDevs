@@ -1,12 +1,14 @@
 package android.andela.com.kenyajavadevs.view;
 
 import android.andela.com.kenyajavadevs.R;
-import android.andela.com.kenyajavadevs.adapter.ProfileListAdapter;
+import android.andela.com.kenyajavadevs.adapter.GithubUsersAdapter;
+import android.andela.com.kenyajavadevs.model.GithubUser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,20 +16,17 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_PROFILE_LINK = "android.andela.com.kenyajavadevs.extra.PROFILE_LINK";
     // TODO: Also put an extra for the profile image.
 
-    private final LinkedList<String> sampleUsernames = new LinkedList<>();
+    private final ArrayList<GithubUser> sampleUsers = new ArrayList<>();
     private RecyclerView mRecyclerView;
-    private ProfileListAdapter mAdapter;
+    private GithubUsersAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Setting up the sample data
-        for (int i = 0; i < 20; i++) sampleUsernames.addLast("Sample User " + (i + 1));
-
         mRecyclerView = findViewById(R.id.recyclerview);
-        mAdapter = new ProfileListAdapter(this, sampleUsernames);
+        mAdapter = new GithubUsersAdapter(this, sampleUsers);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
