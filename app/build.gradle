@@ -28,6 +28,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation ('com.squareup.picasso:picasso:2.71828') {
+        exclude group: 'com.android.support'
+        exclude module: ['exifinterface', 'support-annotations']
+    }
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
