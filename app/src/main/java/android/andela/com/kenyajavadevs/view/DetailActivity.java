@@ -4,7 +4,10 @@ import android.andela.com.kenyajavadevs.R;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -15,6 +18,7 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView usernameTextView = findViewById(R.id.profile_username);
         TextView profileLinkTextView = findViewById(R.id.profile_link);
+        ImageView profileImageView = findViewById(R.id.profile_image);
 
         Intent intent = getIntent();
 
@@ -23,5 +27,8 @@ public class DetailActivity extends AppCompatActivity {
 
         String profileLink = intent.getStringExtra(MainActivity.EXTRA_PROFILE_LINK);
         profileLinkTextView.setText(profileLink);
+
+        String profileImageLink = intent.getStringExtra(MainActivity.EXTRA_PROFILE_IMAGE_LINK);
+        Picasso.get().load(profileImageLink).into(profileImageView);
     }
 }

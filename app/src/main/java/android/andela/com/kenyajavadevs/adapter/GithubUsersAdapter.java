@@ -48,9 +48,11 @@ public class GithubUsersAdapter extends RecyclerView.Adapter<GithubUsersAdapter.
             public void onClick(View v) {
                 Context context = v.getContext();
                 String username = mProfileList.get(holder.getAdapterPosition()).getUsername();
+                String profileImageLink = mProfileList.get(holder.getAdapterPosition()).getAvatarUrl();
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra(MainActivity.EXTRA_USERNAME, username);
                 intent.putExtra(MainActivity.EXTRA_PROFILE_LINK, "github.com/" + username);
+                intent.putExtra(MainActivity.EXTRA_PROFILE_IMAGE_LINK, profileImageLink);
                 context.startActivity(intent);
             }
         });
