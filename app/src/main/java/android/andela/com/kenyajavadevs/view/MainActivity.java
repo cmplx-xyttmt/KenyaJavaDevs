@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
     public static final String LIST_STATE_KEY = "users_list_state";
     public static final String EXTRA_USERNAME = "android.andela.com.kenyajavadevs.extra.USERNAME";
     public static final String EXTRA_PROFILE_LINK = "android.andela.com.kenyajavadevs.extra.PROFILE_LINK";
-    // TODO: Also put an extra for the profile image.
+    public static final String EXTRA_PROFILE_IMAGE_LINK = "android.andela.com.kenyajavadevs.extra.PROFILE_IMAGE_LINK";
 
     Parcelable githubUsersListState;
     LinearLayoutManager mLayoutManager;
