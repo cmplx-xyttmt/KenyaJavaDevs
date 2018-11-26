@@ -5,10 +5,12 @@ import android.andela.com.kenyajavadevs.adapter.GithubUsersAdapter;
 import android.andela.com.kenyajavadevs.model.GithubUser;
 import android.andela.com.kenyajavadevs.presenter.GithubPresenter;
 import android.os.Parcelable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -20,17 +22,39 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
     public static final String EXTRA_PROFILE_IMAGE_LINK = "android.andela.com.kenyajavadevs.extra.PROFILE_IMAGE_LINK";
 
     Parcelable githubUsersListState;
-    LinearLayoutManager mLayoutManager;
+    GridLayoutManager mGridLayoutManager;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    ProgressBar mProgressBar;
+    GithubPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mLayoutManager = new LinearLayoutManager(this);
+        mGridLayoutManager = new GridLayoutManager(this, 2);
+        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        mProgressBar = findViewById(R.id.progress_bar);
 
-        GithubPresenter presenter = new GithubPresenter(this);
-        presenter.getUsers();
+        mPresenter = new GithubPresenter(this);
+        loadUsers();
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadUsers();
+            }
+        });
+    }
+
+    private void loadUsers() {
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
+        mPresenter.getUsers();
+    }
+
+    private void finishLoadingUsers() {
+        mSwipeRefreshLayout.setRefreshing(false);
+        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
     }
 
 
@@ -38,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
     public void usersListReady(List<GithubUser> githubUsers) {
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setAdapter(new GithubUsersAdapter(this, githubUsers));
-        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setLayoutManager(mGridLayoutManager);
+        finishLoadingUsers();
     }
 
     @Override
@@ -46,12 +71,13 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
         Toast.makeText(this,
                 "Something went wrong: " + throwable.getMessage(),
                 Toast.LENGTH_LONG).show();
+        finishLoadingUsers();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        githubUsersListState = mLayoutManager.onSaveInstanceState();
+        githubUsersListState = mGridLayoutManager.onSaveInstanceState();
         outState.putParcelable(LIST_STATE_KEY, githubUsersListState);
     }
 
@@ -66,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
     protected void onResume() {
         super.onResume();
         if (githubUsersListState != null) {
-            mLayoutManager.onRestoreInstanceState(githubUsersListState);
+            mGridLayoutManager.onRestoreInstanceState(githubUsersListState);
         }
     }
 }
