@@ -1,4 +1,6 @@
 [![CircleCI](https://circleci.com/gh/cmplx-xyttmt/KenyaJavaDevs.svg?style=svg)](https://circleci.com/gh/cmplx-xyttmt/KenyaJavaDevs)
+[![Build Status](https://travis-ci.org/cmplx-xyttmt/KenyaJavaDevs.svg?branch=develop)](https://travis-ci.org/cmplx-xyttmt/KenyaJavaDevs)
+[![codecov](https://codecov.io/gh/cmplx-xyttmt/KenyaJavaDevs/branch/develop/graph/badge.svg)](https://codecov.io/gh/cmplx-xyttmt/KenyaJavaDevs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0506624bc76c92ec5a1c/maintainability)](https://codeclimate.com/github/cmplx-xyttmt/KenyaJavaDevs/maintainability)
 
 # Kenya Java Devs
