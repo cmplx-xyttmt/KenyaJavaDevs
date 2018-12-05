@@ -28,11 +28,22 @@ Alternatively, go to **Build**>**Build Bundle(s) / APK(s)**>**Build APK(s)** to
 generate an apk for the project; then install this apk on your device.
 
 ## Running the tests
-Coming Soon ...
+To run the tests and generate a coverage report, run the following command:
+```
+./gradlew jacocoTestReport
+```
+
+You can find the html coverage report in the `app/build/reports/coverage/debug/index.html`
+folder.
 
 ## Mockups
 ![Main Activity Mockup](wireframes/main_activity_mockup.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Main Activity Mockup](wireframes/profile_activity_mockup.png)
+
+## Demo
+The final app looks as follows:
+
+![Demo Gif](screenshots/demo-gif.gif)
 
 ## Built With
 - [Java](https://www.java.com/en/download/)
