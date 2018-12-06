@@ -4,13 +4,16 @@ import android.andela.com.kenyajavadevs.R;
 import android.andela.com.kenyajavadevs.adapter.GithubUsersAdapter;
 import android.andela.com.kenyajavadevs.model.GithubUser;
 import android.andela.com.kenyajavadevs.presenter.GithubPresenter;
+import android.andela.com.kenyajavadevs.util.NetworkUtility;
 import android.os.Parcelable;
+import android.support.design.widget.Snackbar;
 import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -50,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
     }
 
     private void loadUsers() {
+        NetworkUtility utility = new NetworkUtility(this);
+        if (!utility.isConnectedToInternet()) {
+            notConnectedToInternetAction();
+            return;
+        }
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
         espressoTestIdlingResource.increment();
         mPresenter.getUsers();
@@ -101,6 +109,20 @@ public class MainActivity extends AppCompatActivity implements ProfileListView {
         super.onResume();
         if (githubUsersListState != null) {
             mGridLayoutManager.onRestoreInstanceState(githubUsersListState);
+        }
+    }
+
+    public void notConnectedToInternetAction() {
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.swipe_refresh), R.string.connectivity_status, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.retry_string, new SnackbarButtonListener());
+        snackbar.show();
+    }
+
+    private class SnackbarButtonListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            loadUsers();
         }
     }
 }

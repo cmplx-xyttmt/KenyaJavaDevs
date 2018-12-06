@@ -2,4 +2,6 @@
     <string name="app_name">Kenya Java Devs</string>
     <string name="username">sample-username</string>
     <string name="profile_link">github.com/cmplx-xyttmt</string>
+    <string name="connectivity_status">Not connected to the internet, turn on data or wifi connection and retry</string>
+    <string name="retry_string">RETRY</string>
 </resources>
