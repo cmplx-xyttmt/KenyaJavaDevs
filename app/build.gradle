@@ -45,7 +45,8 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.andela.com.kenyajavadevs.ExampleTestRunner"
     }
     buildTypes {
         release {
@@ -84,4 +85,5 @@ dependencies {
     implementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "com.linkedin.testbutler:test-butler-library:$rootProject.testButlerVersion"
 }

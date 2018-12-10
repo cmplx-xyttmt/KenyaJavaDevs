@@ -36,4 +36,5 @@ ext {
     junitVersion = '4.12'
     testRunnerVersion = '1.0.2'
     espressoVersion = '3.0.2'
+    testButlerVersion = '2.0.0'
 }
