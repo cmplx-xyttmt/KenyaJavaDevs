@@ -1,5 +1,6 @@
 package android.andela.com.kenyajavadevs.view;
 
+import android.andela.com.kenyajavadevs.BuildConfig;
 import android.andela.com.kenyajavadevs.R;
 import android.andela.com.kenyajavadevs.adapter.GithubUsersAdapter;
 import android.andela.com.kenyajavadevs.model.GithubUser;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;

@@ -1,11 +1,13 @@
 package android.andela.com.kenyajavadevs.view;
 
+import android.andela.com.kenyajavadevs.BuildConfig;
 import android.andela.com.kenyajavadevs.R;
 import android.content.pm.ActivityInfo;
 import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import com.linkedin.android.testbutler.TestButler;
 
@@ -36,7 +38,6 @@ public class MainActivityTest {
     @Before
     public void setUp() {
         toggleConnectivity(false);
-        threadSleep();
 
         CountingIdlingResource mainActivityIdlingResource =
                 mMainActivityTestRule.getActivity().getEspressoTestIdlingResourceForMainActivity();
@@ -46,6 +47,8 @@ public class MainActivityTest {
     @Test
     public void clickOnUserItemOpensDetailActivity() {
         toggleConnectivity(true);
+        Log.d("TEST_ENV_VARIABLE", "The token is: " + BuildConfig.GITHUB_TOKEN);
+        onView(withId(R.id.swipe_refresh)).check(matches(isDisplayed()));
         onView(withId(R.id.swipe_refresh)).perform(swipeDown());
         threadSleep();
 
